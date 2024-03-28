@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ItemPickup;
 
 public class MovementController : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class MovementController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererRight;
     public AnimatedSpriteRenderer spriteRendererDeath;
     private AnimatedSpriteRenderer activeSpriteRenderer;
+
+    private int speedItemCount = 1;
+    private int bombCount = 1; // Số lượng bom
+    private int blastItemCount = 1; // Số lượng item tăng bán kính nổ
+
     #endregion
 
     #region Chức năng
@@ -64,6 +70,39 @@ public class MovementController : MonoBehaviour
             SetDirection(Vector2.zero, activeSpriteRenderer);
         }
     }
+    public void IncrementBombCount()
+    {
+        bombCount++;
+        UpdateItemCountText();
+    }
+
+    // Phương thức để tăng số lượng item tăng bán kính nổ
+    public void IncrementBlastItemCount()
+    {
+        blastItemCount++;
+        UpdateItemCountText();
+    }
+
+    // Phương thức để tăng số lượng item tăng tốc độ
+    public void IncrementSpeedItemCount()
+    {
+        speedItemCount++;
+        UpdateItemCountText();
+    }
+
+    // Phương thức cập nhật số lượng item trên Text
+    private void UpdateItemCountText()
+    {
+        // Lấy đối tượng ScoreDisplay trong cùng GameObject
+        ScoreDisplay scoreDisplay = GetComponent<ScoreDisplay>();
+
+        // Kiểm tra null tránh lỗi
+        if (scoreDisplay != null)
+        {
+            // Cập nhật số lượng item trên Text
+            scoreDisplay.UpdateItemCountText(bombCount, blastItemCount, speedItemCount);
+        }
+    }
 
     // Thiết lập hướng quay cho nhân vật
     private void SetDirection(Vector2 newDirection, AnimatedSpriteRenderer spriteRenderer)
@@ -102,6 +141,8 @@ public class MovementController : MonoBehaviour
         {
             DeathSequence();
         }
+        // Đụng trúng item
+       
     }
 
     private void DeathSequence()
@@ -123,5 +164,7 @@ public class MovementController : MonoBehaviour
         gameObject.SetActive(false);
         FindObjectOfType<GameManager>().CheckWinStage(gameOverPanel);
     }
+   
     #endregion
+
 }

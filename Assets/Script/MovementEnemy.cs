@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class MovementEnemy : MonoBehaviour
 {
     #region Biến   
+    private int scorePerEnemyBalloon = 10;
     private float speed = 1.0f;
 
     private Vector2 moveNow;
@@ -162,5 +163,7 @@ public class MovementEnemy : MonoBehaviour
         spriteRenderEnemyLive.enabled = false;
         spriteRenderEnemyDeath.enabled = true;
         Destroy(gameObject,1.25f);
+
+        GameManager.instance.AddScore(scorePerEnemyBalloon);
     }
 }

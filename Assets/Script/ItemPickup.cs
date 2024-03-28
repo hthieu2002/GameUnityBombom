@@ -16,6 +16,23 @@ public class ItemPickup : MonoBehaviour
     #endregion
 
     #region Hàm
+    public void UpdateItemCount(GameObject player)
+    {
+        switch (Type)
+        {
+            case ItemType.ExtraBomb:
+                player.GetComponent<MovementController>().IncrementBombCount();
+                break;
+
+            case ItemType.BlastRadius:
+                player.GetComponent<MovementController>().IncrementBlastItemCount();
+                break;
+
+            case ItemType.SpeedIncrease:
+                player.GetComponent<MovementController>().IncrementSpeedItemCount();
+                break;
+        }
+    }
     private void OnItemPickup(GameObject player)
     {
         switch(Type)
@@ -32,6 +49,7 @@ public class ItemPickup : MonoBehaviour
                 player.GetComponent<MovementController>().speed++;
                 break;
         }
+        UpdateItemCount(player);
 
         Destroy(gameObject); // Xóa vật phẩm khi đã nhặt
     }

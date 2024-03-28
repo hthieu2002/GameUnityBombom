@@ -8,6 +8,7 @@ using static Helpers;
 public class MovementBear : MonoBehaviour
 {
     #region Biến
+    private int scorePerEnemyBear = 50;
     private Helpers astartAlgorithm = new Helpers();
     private List<Node> pending_actions = new List<Node>();
 
@@ -197,6 +198,8 @@ public class MovementBear : MonoBehaviour
         spriteRenderEnemyLive.enabled = false;
         spriteRenderEnemyDeath.enabled = true;
         Destroy(gameObject, 1.25f);
+
+        GameManager.instance.AddScore(scorePerEnemyBear);
     }
 
     // Đuổi theo người chơi

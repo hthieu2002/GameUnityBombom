@@ -60,11 +60,17 @@
   <ItemGroup>
     <Compile Include="Assets\Script\BombCotroller.cs" />
     <Compile Include="Assets\Script\MovementController.cs" />
+    <Compile Include="Assets\Script\InputFieldEnter.cs" />
     <Compile Include="Assets\Script\MovementBear.cs" />
+    <Compile Include="Assets\Script\Data.cs" />
     <Compile Include="Assets\Script\ItemPickup.cs" />
+    <Compile Include="Assets\Script\ButtonImageChange.cs" />
     <Compile Include="Assets\Script\Helpers.cs" />
+    <Compile Include="Assets\Script\GameData.cs" />
     <Compile Include="Assets\Script\MovementEnemyThroughWall.cs" />
+    <Compile Include="Assets\Script\ScoreDisplay.cs" />
     <Compile Include="Assets\Script\Destructible.cs" />
+    <Compile Include="Assets\Script\PlayGame.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\AnimatedSpriteRenderer.cs" />
     <Compile Include="Assets\Script\GameOverPanel.cs" />
@@ -72,6 +78,7 @@
     <Compile Include="Assets\Script\MenuScript.cs" />
     <Compile Include="Assets\Script\ItemDestroy.cs" />
     <Compile Include="Assets\Script\MovementEnemy.cs" />
+    <Compile Include="Assets\Script\Rankings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
